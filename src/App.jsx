@@ -360,38 +360,51 @@ function App() {
     await loadYouTubeVideos();
   };
 
-  // Loading state
+  // Premium Loading state
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
-        {/* Animated Background */}
+      <div className="flex items-center justify-center h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950 relative overflow-hidden">
+        {/* Dynamic Animated Background */}
         <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-          <div className="absolute top-0 right-0 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-          <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+          <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-blob"></div>
+          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+          <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+
+          {/* Grid Pattern Overlay */}
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0)',
+            backgroundSize: '40px 40px'
+          }}></div>
         </div>
 
-        <div className="text-center max-w-md mx-auto p-6 relative z-10">
-          <div className="relative mb-8">
-            {/* Animated Logo */}
-            <div className="relative w-24 h-24 mx-auto">
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 rounded-full animate-spin"></div>
-              <div className="absolute inset-1 bg-slate-900 rounded-full flex items-center justify-center">
-                <div className="text-4xl">🎓</div>
+        <div className="text-center max-w-lg mx-auto p-8 relative z-10">
+          <div className="relative mb-10">
+            {/* Premium Animated Logo */}
+            <div className="relative w-28 h-28 mx-auto">
+              {/* Rotating Rings */}
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-500 to-emerald-500 rounded-full animate-spin" style={{ animationDuration: '3s' }}></div>
+              <div className="absolute inset-1 bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-600 rounded-full animate-spin" style={{ animationDuration: '2s', animationDirection: 'reverse' }}></div>
+
+              {/* Center Icon */}
+              <div className="absolute inset-2 bg-gradient-to-br from-slate-950 to-slate-900 rounded-full flex items-center justify-center shadow-2xl">
+                <div className="text-5xl animate-float">🎓</div>
               </div>
             </div>
-            <div className="absolute -inset-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+
+            {/* Multi-layer Glow */}
+            <div className="absolute -inset-16 bg-gradient-to-r from-cyan-500 via-blue-500 to-emerald-500 rounded-full blur-3xl opacity-30 animate-pulse"></div>
+            <div className="absolute -inset-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full blur-2xl opacity-40 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
           </div>
-          
-          <h1 className="text-4xl font-black text-white mb-2 bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 bg-clip-text text-transparent">
-            SkilSnap
+
+          <h1 className="text-5xl font-black text-white mb-3 tracking-tight">
+            <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-emerald-400 bg-clip-text text-transparent animate-gradient">SkilSnap</span>
           </h1>
-          <h2 className="text-xl font-bold text-white mb-2">Loading Your Skills Network</h2>
-          <p className="text-gray-400 mb-6">Connecting to amazing tutorials...</p>
-          
-          {/* Loading Progress Bar */}
-          <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden mb-6">
-            <div className="h-full bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 rounded-full animate-pulse"></div>
+          <h2 className="text-2xl font-bold text-white mb-3 drop-shadow-lg">Loading Your Skills Network</h2>
+          <p className="text-gray-300 mb-8 text-lg">Connecting to amazing tutorials...</p>
+
+          {/* Premium Loading Progress Bar */}
+          <div className="w-full h-2.5 bg-white/10 rounded-full overflow-hidden mb-8 backdrop-blur-sm border border-white/10">
+            <div className="h-full bg-gradient-to-r from-cyan-400 via-blue-500 to-emerald-500 rounded-full animate-shimmer shadow-lg shadow-blue-500/50"></div>
           </div>
           
           {error && (
@@ -400,20 +413,25 @@ function App() {
             </div>
           )}
           
-          {/* Manual bypass button */}
+          {/* Premium bypass button */}
           <button
             onClick={handleBypassLoading}
-            className="group relative bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 hover:from-purple-500 hover:via-pink-500 hover:to-red-500 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-2xl w-full"
+            className="group relative w-full"
           >
-            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl blur opacity-50 group-hover:opacity-75 transition-opacity"></div>
-            <div className="relative flex items-center justify-center space-x-2">
-              <span className="text-2xl">🚀</span>
-              <span>Launch Demo Mode</span>
+            <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-emerald-500 rounded-2xl blur-lg opacity-60 group-hover:opacity-100 transition-all duration-300 animate-pulse"></div>
+            <div className="relative bg-gradient-to-r from-cyan-500 via-blue-600 to-emerald-600 hover:from-cyan-400 hover:via-blue-500 hover:to-emerald-500 text-white font-bold py-5 px-10 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-2xl border border-white/20">
+              <div className="flex items-center justify-center space-x-3">
+                <span className="text-3xl animate-bounce">🚀</span>
+                <div className="text-left">
+                  <div className="text-lg font-black">Launch Demo Mode</div>
+                  <div className="text-xs text-cyan-100 font-medium">Experience the full app instantly</div>
+                </div>
+              </div>
             </div>
           </button>
-          
-          <p className="text-gray-500 text-sm mt-4 font-medium">
-            Experience the full app with demo content
+
+          <p className="text-gray-400 text-sm mt-5 font-medium">
+            Skip the wait and explore with demo content
           </p>
         </div>
       </div>
@@ -430,9 +448,9 @@ function App() {
     );
   }
 
-  // Main app interface
+  // Main app interface with premium styling
   return (
-    <div className="min-h-screen bg-dark-300 relative">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950 relative">
       {/* Main Content */}
       {currentView === 'feed' && (
         <EnhancedVideoFeed 
@@ -465,21 +483,35 @@ function App() {
       )}
       
       {currentView === 'trending' && (
-        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center pb-20">
-          <div className="text-center max-w-md mx-auto p-6">
-            <div className="relative mb-6">
-              <div className="w-20 h-20 bg-gradient-to-r from-orange-500 to-red-600 rounded-full flex items-center justify-center mx-auto shadow-2xl">
-                <span className="text-3xl">🔥</span>
+        <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-orange-950 flex items-center justify-center pb-20 relative overflow-hidden">
+          {/* Background Effects */}
+          <div className="absolute inset-0">
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-orange-500 to-red-500 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-blob"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+          </div>
+
+          <div className="text-center max-w-md mx-auto p-6 relative z-10">
+            <div className="relative mb-8">
+              <div className="relative w-24 h-24 mx-auto">
+                <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 rounded-full blur-xl opacity-70 animate-pulse"></div>
+                <div className="relative w-24 h-24 bg-gradient-to-r from-orange-500 to-red-600 rounded-full flex items-center justify-center shadow-2xl border-4 border-white/20">
+                  <span className="text-4xl animate-bounce">🔥</span>
+                </div>
               </div>
-              <div className="absolute -inset-4 bg-gradient-to-r from-orange-500 to-red-600 rounded-full blur opacity-20 animate-ping"></div>
+              <div className="absolute -inset-6 bg-gradient-to-r from-orange-500 to-red-600 rounded-full blur-2xl opacity-30 animate-ping"></div>
             </div>
-            <h2 className="text-2xl font-bold text-white mb-3">Trending Skills</h2>
-            <p className="text-gray-400 mb-6">Discover the hottest tutorials right now</p>
-            <button 
+            <h2 className="text-3xl font-black text-white mb-4 drop-shadow-lg">
+              <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">Trending Skills</span>
+            </h2>
+            <p className="text-gray-300 mb-8 text-lg">Discover the hottest tutorials right now</p>
+            <button
               onClick={() => setCurrentView('discover')}
-              className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
+              className="group relative w-full max-w-xs mx-auto"
             >
-              Explore Trending
+              <div className="absolute -inset-1 bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl blur opacity-75 group-hover:opacity-100 transition-all duration-300 animate-pulse"></div>
+              <div className="relative bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-2xl border border-white/20">
+                Explore Trending
+              </div>
             </button>
           </div>
         </div>

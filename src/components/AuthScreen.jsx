@@ -73,30 +73,45 @@ const AuthScreen = ({ auth, onAuthSuccess }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-dark-300 via-dark-200 to-dark-300 flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Animated Background Elements */}
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950 flex items-center justify-center p-4 relative overflow-hidden">
+      {/* Premium Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-secondary/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-pulse delay-500"></div>
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full mix-blend-screen blur-3xl opacity-20 animate-blob"></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full mix-blend-screen blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full mix-blend-screen blur-3xl opacity-15 animate-blob animation-delay-4000"></div>
+
+        {/* Grid Pattern Overlay */}
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0)',
+          backgroundSize: '40px 40px'
+        }}></div>
       </div>
 
       <div className="max-w-md w-full relative z-10">
         {/* Welcome Screen */}
         {step === 'welcome' && (
-          <div className="bg-dark-200/80 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/10">
-            {/* Logo and Header */}
-            <div className="text-center mb-8">
-              <div className="relative mb-6">
-                <div className="w-20 h-20 bg-gradient-to-r from-primary to-secondary rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-                  <Sparkles className="w-10 h-10 text-white" />
+          <div className="glass-premium rounded-3xl p-8 shadow-2xl">
+            {/* Premium Logo and Header */}
+            <div className="text-center mb-10">
+              <div className="relative mb-8">
+                {/* Multi-layered Logo */}
+                <div className="relative w-24 h-24 mx-auto">
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-500 to-emerald-500 rounded-2xl animate-spin" style={{ animationDuration: '3s' }}></div>
+                  <div className="absolute inset-1 bg-gradient-to-br from-slate-950 to-slate-900 rounded-2xl flex items-center justify-center shadow-2xl">
+                    <Sparkles className="w-12 h-12 text-cyan-400 animate-pulse" />
+                  </div>
                 </div>
-                <div className="absolute -top-2 -right-2 w-6 h-6 bg-accent rounded-full animate-ping"></div>
+
+                {/* Glow Effects */}
+                <div className="absolute -inset-8 bg-gradient-to-r from-cyan-500 via-blue-500 to-emerald-500 rounded-full blur-2xl opacity-30 animate-pulse"></div>
+                <div className="absolute top-0 right-0 w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-bounce shadow-lg shadow-yellow-500/50"></div>
               </div>
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent mb-2">
-                SkilSnap
+
+              <h1 className="text-5xl font-black mb-3 tracking-tight">
+                <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-emerald-400 bg-clip-text text-transparent animate-gradient">SkilSnap</span>
               </h1>
-              <p className="text-gray-400 text-lg">Learn Skills, Hire Experts</p>
+              <p className="text-gray-300 text-xl font-medium">Learn Skills, Hire Experts</p>
+              <p className="text-gray-400 text-sm mt-2">Your gateway to vocational excellence</p>
             </div>
 
             {/* Feature Highlights */}
